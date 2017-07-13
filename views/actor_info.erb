@@ -9,7 +9,7 @@
       <% @movies.each() do |movie| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="movie_ids[]" value="<%= movie.id() %>"><%= movie.name() %>
+            <input type="checkbox" name="movie_ids[]" value="<%= movie.id() %>" required><%= movie.name() %>
           </label>
         </div>
       <% end %>
@@ -33,4 +33,3 @@
 
 
   <a href="/">Return to Main Page</a>
-  
