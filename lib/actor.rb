@@ -33,16 +33,21 @@ class Actor
       self.name().==(another_actor.name()).&(self.id().==(another_actor.id()))
     end
 
+#method updates the actors movies
     define_method(:update) do |attributes|
       @name = attributes.fetch(:name, @name)
       @id = self.id()
       DB.exec("UPDATE actors SET name = '#{@name}' WHERE id = #{@id};")
     end
 
+#the method delete the ids after showing them
     define_method(:delete) do
       DB.exec("DELETE FROM actors WHERE id = #{self.id()};")
+      DB.exec("DELETE FROM actors_movies WHERE actor_id = #{self.id()};")
+
     end
 
+#passes the method to show which movies an actor has being in.
     define_method(:update) do |attributes|
     @name = attributes.fetch(:name, @name)
     DB.exec("UPDATE actors SET name = '#{@name}' WHERE id = #{self.id()};")
